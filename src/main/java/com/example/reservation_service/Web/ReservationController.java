@@ -1,6 +1,7 @@
 package com.example.reservation_service.Web;
 
 
+import com.example.reservation_service.Dto.PassengerCredentialsDTO;
 import com.example.reservation_service.Entity.Passenger;
 import com.example.reservation_service.Entity.Reservation;
 import com.example.reservation_service.Service.ReservationService;
@@ -46,5 +47,15 @@ public class ReservationController {
     @GetMapping("/passenger/{cin}")
     public Reservation getPassengerByCin(@PathVariable String cin) {
         return reservationService.getPassengerByCin(cin);
+    }
+    @GetMapping("/passenger-credentials")
+    public List<PassengerCredentialsDTO> getAllPassengerCredentials() {
+        return reservationService.getAllPassengerCredentials();
+    }
+
+    // Endpoint to get passenger email and password by CIN
+    @GetMapping("/passenger-credentials/{cin}")
+    public PassengerCredentialsDTO getPassengerCredentialsByCin(@PathVariable String cin) {
+        return reservationService.getPassengerCredentialsByCin(cin);
     }
 }
