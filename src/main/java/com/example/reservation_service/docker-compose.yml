@@ -13,6 +13,19 @@ services:
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq  # Use the volume to persist RabbitMQ data
 
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"  # MongoDB port
+    environment:
+      MONGO_INITDB_DATABASE: Reservation-service  # Initialize the database
+    volumes:
+      - mongodb_data:/data/db  # Persist MongoDB data
+
 volumes:
   rabbitmq_data:
+    driver: local  # Use the local volume driver
+
+  mongodb_data:
     driver: local  # Use the local volume driver
