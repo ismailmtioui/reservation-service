@@ -52,8 +52,11 @@ public class ReservationService {
         // Send passenger credentials to RabbitMQ
         sendPassengerCredentialsToRabbitMQ(reservation);
 
+
         return savedReservation;
     }
+
+
 
     // Retrieve a reservation by its ID
     public Reservation getReservationById(String id) {
